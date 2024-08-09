@@ -1,0 +1,69 @@
+---
+title: "Day 5 morning session"
+author: "Marina Kochuten"
+format: html
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r}
+#| warning: false
+#| message: false
+# load libraries ----
+library(tidyverse)
+```
+
+Try using `head()`, `tail()`, and `dim()` on the `dplyr::starwars` data frame:
+
+```{r}
+#| include: false
+# do some data exploration on the starwars df ----
+head(starwars)
+tail(starwars)
+dim(starwars)
+```
+
+- Create a ggplot (scatterplot) of character mass (y-axis) and height (x-axis)
+- Update color of the points so that color changes based on the value of `mass`
+- 
+
+```{r}
+#| warning: false
+#| echo: false
+ggplot(data = starwars, aes(x = height, 
+                            y = mass, 
+                            color = mass)) +
+  geom_point() +
+  labs(x = "Height (cm)", 
+       y = "Mass (kg)",
+       title = "Here is my title")
+```
+
+ - create a histrogram of character heights
+ - update the fill color (`fill`) to purple and the borders of each bin (`color`) to orange
+ - update axis labels
+ - update your code chunk options so that ony your code and output graph appear in the rendered doc
+
+```{r}
+#| warning: false
+#| message: false
+
+ggplot(data = starwars, aes(x = height)) +
+  geom_histogram(color = "orange", fill = "purple")
+
+
+```
+
+
+```{r}
+sw_height_mean <- mean(starwars$height, na.rm = TRUE)
+sw_height_median <- median(starwars$height, na.rm = TRUE)
+sw_height_var <- var(starwars$height, na.rm = TRUE)
+sw_height_sd <- sd(starwars$height, na.rm = TRUE)
+```
+
+
+
+
